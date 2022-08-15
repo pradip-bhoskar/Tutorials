@@ -1,0 +1,111 @@
+JDBC---> Java Database Connectivity
+--------------------------------------
+	It is api or package design by java used to provide communication 
+	between java application and database application.
+	
+Steps to create JDBC application:
+--------------------------------------
+--------------------------------------
+step1 :
+--------
+Install any database software:
+	eg. MySQL, Oracle
+step 2:
+--------
+Add the java.sql package in application:
+	this package contains some class & intefaces related to jdbc api
+	
+	import java.sql.*:
+
+step 3:
+--------
+Load the Driver:
+	driver are the some inbuilt classes
+	there are five types of driver
+	we use type 4 driver which provide the database vender
+	to use the driver we need to add .jar file in project provided by database vender
+	
+	1)create the object of the Driver class
+        com.mysql.cj.jdbc.Driver d = new com.mysql.jdbc.Driver();
+    2)register the driver
+        DriverManager.registerDriver(d);						
+	
+    // Class.forName("com.mysql.cj.jdbc.Driver");
+
+step 4:
+---------
+Establish the connection:
+    
+	Connection conn=DriverManager.getConnection(url,username,password);
+    here,
+        url=path of the database eg.jdbc:mysql://localhost:3306/java_db
+        username= database username
+        password= database password
+
+
+step 5:
+--------
+work with database:
+    1)Statement
+        useful for static sql commands-create,alter,rename,drop
+    2)PreparedStatement
+        useful for pre-compiled sql statements-update,delete,insert 
+    3)CollableStatement
+        useful for sql stored procedures
+    4)executeUpdate()
+        useful for ddl and dml commands
+    5)exeuteQuery()
+        used for select command
+    6)ResultSet
+        used when select command is used
+
+
+    Create query,Statement, PreparedStatement, CallableStatement
+        eg 
+             String q="create table students (id int,name varchar[20],marks int)";
+             Statement stmt=con.createStatement();
+             int result=stmt.executeUpdate(q);
+
+            `String q="insert into students values(?,?,?)";
+             PreparedStatement pstmt=con.prepareStatement(q);
+             pstmt.setInt(1,25);
+             pstmt.setString(2,"Pradip");
+             pstmt.setString(3,73);
+             int result=stmt.executeUpdate();
+
+             String q="select * from students";
+             Statement stmt = con.createStatement();
+             ResultSet set=stmt.executeQuery(q);
+
+    Process the data :
+ 
+         while(set.next())
+         {
+           int id=set.getInt("studentID");
+           String name=set.getString("studentName");
+           System.out.println(id);
+           System.out.println(name);
+
+         }
+
+step 6:
+--------
+close the connection:
+    conn.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
