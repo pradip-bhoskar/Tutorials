@@ -1,0 +1,55 @@
+//refer this article
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+
+Step 1:
+-------------------------------
+//check existing ssh key
+ls -al ~/.ssh
+
+
+Step 2:
+-------------------------------
+//generate ssh key
+	ssh-keygen -t ed25519 -C "your_email@example.com"
+	> Enter a file in which to save the key (/home/you/.ssh/algorithm): [Press enter]
+	> Enter passphrase (empty for no passphrase): [Type a passphrase]
+	> Enter same passphrase again: [Type passphrase again]
+
+Step 3:
+-------------------------------
+//Add ssh agent
+	1)Start the ssh-agent in the background.
+		eval "$(ssh-agent -s)"
+	2)Add your SSH private key to the ssh-agent.
+		ssh-add ~/.ssh/id_ed25519
+	
+Step 4:
+-------------------------------
+//Add ssh key to github account
+	1)see ssh key and copy it
+		cat ~/.ssh/id_ed25519.pub
+		# Then select and copy the contents of the id_ed25519.pub file
+	2)Add it on github
+
+Step 5: 
+-------------------------------
+//test ssh connection
+    ssh -T git@github.com
+
+
+
+///Change ssh key passphrase
+    ssh-keygen -p -f ~/.ssh/id_ed25519
+
+
+
+///////////////////////////////////////////
+Alternatively use Personal Access Token for https urls
+
+
+
+1)create the personal access token going through github account.....
+2)use this token as a password to authorise
+
+
+

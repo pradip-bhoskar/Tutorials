@@ -1,0 +1,100 @@
+1)install git in linux
+-------------------------------
+	sudo apt-get install git
+
+2)check git version
+-------------------------------
+	git -- version
+
+3)set username and email id
+-------------------------------
+	git config --global user.name "Pradip Bhoskar"
+	git config user.name
+
+	git config --global user.email "pradipbhoskar1997@gmail.com"
+	git config user.email
+
+4)Create a new repository
+------------------------------
+    git init               //makes current directory as git repository
+    git init DirectoryName  //makes subdirectory as git repository
+
+5)List files
+------------------------------
+    ls
+    ls -lart            //list hidden files also
+
+6)check git status
+------------------------------
+    git status
+    git status -s	//gives summary of status
+
+7)Add file to staging area
+------------------------------
+    git add filename
+    eg. git add Git_commits
+
+    git add -A          //adds all files at a time in staging area
+    git add .
+
+8)commit the changes
+------------------------------
+    git commit
+    git commit -m "commit message here"         
+
+9) see all commits
+------------------------------
+    git log
+    git log -p -2	// shows last two commits
+
+//git commit -m "Git_commands modified first time"
+
+10)Get files from previous checkpoint
+------------------------------				//mostly use to switch between branches
+    git checkout filename    					//gets particular file
+    git checkout -f						//gets all files
+    git checkout 0f14aa15e907a7ea71aaa+64be0d9df5c04374b05	//hashcode of previous commit
+    
+   git checkout master		
+
+11)Compare files
+------------------------------
+	git diff		//shows difference between stagging area file  and modified file
+	git diff --staged	//staging area vs last commit
+	git diff 0f14aa15e907a7ea71aaa64be0d9df5c04374b05 94dbd3de29f0858407dc41fdf569105a09c78380
+	'
+12)commit directly without adding stagging area
+------------------------------
+	git commit -a -m "commited directly"    
+	
+13) remove file
+------------------------------
+	git rm --cached filename 	//removes the file from stagging area
+	git rm -f filename 		//removes file from stagging area as well as disk
+	
+14).gitignore
+------------------------------
+	touch .gitignore 	//used to ignore files
+	
+15)create a new branch
+------------------------------
+ 	git branch			//shows all branches
+ 	git branch pradip_branch	//creates a branch
+ 	git checkout pradip_branch	//switch branch
+
+	git checkout -b pradip_sub_branch 	//create as well as switches branch
+
+16) merge the branch
+------------------------------
+	git merge pradip_sub-branch	//pradip_sub_branch is merged with pradip_branch 
+
+
+
+
+
+
+
+
+
+
+
