@@ -1,0 +1,774 @@
+* JavaScript is event based programming language
+
+strong points of javapoint----> Events, DOM
+
+Web Development: jQuery, Angular, React, Vue, Node
+Desktop App: Electron JS
+Mobile App: Angular, React, Vue, React Native, Node 
+
+
+Implement javascript in html:
+-----------------------------
+	1)using <script></script> tag inside <head></head> tag or <body></tag>
+	2)using external file
+		<script src="myfile.js" ><script>
+		
+Implement html in javascript:
+-----------------------------
+	document.write("<h1>Hello world</h1>");
+	
+Comments in javascript:
+----------------------------
+	//single line comment
+	/*    multi line
+		comment	*/
+		
+Variables:
+-----------
+	1)var variable_name;  		//can be declare multiple time and can change value multiple times
+	
+	2)let 				// declare once but value can change
+	
+	3)const				// declare once and not changable
+	
+
+Data Types:
+--------------
+	1)string:	var x="Hello World";
+	
+	2)number:	var x= 25;		//3.5 ,-25 also number
+		
+	3)boolean:	var x= true;
+	
+	4)array: 	var x= ["Pradip","vicky","rushi"];
+	
+	5)object:	var x= {first_name:"Pradip",last_name:"Bhoskar"};
+	
+	6)null:	var x= null;
+	
+	7)undefined: 	var x;
+	
+console.log(typeof(x));		//checks the type 
+
+console:
+-----------
+	document.write("hello");			//prints value on  html page
+	
+	1)	console.log("hello");			//prints value in browser's console
+	
+	2)	console.table([]);			//prints table 
+							eg. console.table({first_name:"Pradip", last_name:"Bhoskar"});
+
+	3)	console.error("Error message");		//shows error message
+
+	4)	console.warn("warning message");	//shows warning message
+	
+	5)	console.time(); console.timeEnd();	//shows time required to run the code
+	
+	
+Operators:
+----------
+	==		//compares value not a data type
+	===		//compares values as well as data types
+		
+	
+	
+alert box:
+---------
+	alert("Hello World ");		//gives the pop-up message
+	
+confirm box:
+-----------
+	confirm("question here");		//gives ans true or false	
+eg.
+	let result = confirm("Are you ready to work?");
+	if(result)
+		alert("Thats great.............!");
+	
+prompt box:
+------------
+	prompt("Enter your name:");		//takes the any type of input from user
+eg.
+	let result=prompt("What is your name?");
+	document.write(`your name is:  ${result}`);
+	
+
+function:
+-----------
+	function function_name(){
+		//code here
+	}
+	
+	function_name();		//calling the function
+	
+	
+Events:
+-----------
+	Click Event:	onclick
+	eg.
+		function message(){
+			document.write("Event called .....");
+		}
+		<button onclick="message()">Call event</button>
+
+	1)Click: 		onclick				8)Key Press:		onkeypress	
+											//only works in body or form tag
+	2)Double Click:		ondbclick			9)Key up:		onkeyup
+	3)Right Cick:		oncontextmenu			10)Load:		onload
+	4)Mouse Hover:		onmouseenter			11)unload:		onunload
+	5)Mouse Out:		onmouseout			12)Resize:		onresize
+	6)Mouse Down:		onmousedown			13)Scroll:		onscroll
+	7)Mouse up:		onmouseup
+	
+Loops:
+--------
+	1)for loop	2)while loop	3)do while loop		
+4)for in loop(for Objects)	5)forEach loop(for Arrays)
+
+	forEach:(for array)
+	-------
+		ary_name.forEach(
+			//code here
+		
+		);
+		
+	for in loop:(for object)
+	------------
+		for(var property_name in obj)
+		{
+			//statement
+		}		
+		eg.
+			const full_name ={fname: "Pradip",lname: " Bhoskar"};
+			for(var property_name in full_name)
+			{
+				document.write(full_name[property_name] + "<br>");
+			}
+
+
+Arrays:		
+--------
+	In javascript array is a single variable that stores multiple elements(similar or different).
+		eg. 
+		var newData = ['work', 'exercise', 1, true];
+
+	create array:
+		1) var ary_name1 = [10,20,30,40];					//using literals []
+		2) var ary_name2 = new Array("Pradip ","Dasharath ","Bhoskar ");	//using Array constructor
+		
+	print array:
+		document.write(ary_name1);		//loop is not necessory
+	
+		document.write(ary_name2[0]);		//prints 0th index element
+		
+	You can also store arrays, functions and other objects inside an array. For example,
+
+		var xyz = [
+   				 	{'task1': 'exercise'},
+    					[1, 2 ,3],
+    					function hello() { console.log('hello')}
+			  ];
+
+	
+	delete ary_name1[2];		//removes 2nd index element
+	
+	array method:
+		sort(),reverse(), pop(),push(),isArray(),......lots of method😅️
+			ary_name1.sort();
+	.
+		*1) sort()						//sorts the elements		
+		2) reverse()						//reverse the elements
+		3) pop()						//removes last element
+		4) push() 						//adds last element
+		5) shift()						//removes first element
+		6) unshift()						//adds first element
+		7) concat()						// merge two arrays
+		8) join()						//merge all elements in single element
+		9) slice(startIindex,endIndex)				//prints values between given indices
+		10) splice(startIndex,deleteEele,"newVal1","newVal2") 	//delete and add elements from given index
+		11)isArray()						//checks the array
+		*12)indexof("search value")				//finds index of given value from start
+		13) lastIndexOf("search value")				//finds index of given value from last
+		*14) includes("search value")				//checks given value is present or not
+		15) some(condition)					//checks any element pass a test or not
+		16) every(condition)					//checks every element pass a test or not
+		17) find(condition)					//gives the value of first true value
+		18)findIndex(condition)					//gives the index of first true value
+		19) filter(condition)					//creates new array of given condition
+		*20) toString()						//converts array into string
+		*21) valueOf()						//prints array value of array
+		22) fill()						// fills the static value 
+		*23) forEach()						//execute for every element
+
+
+Objects:
+--------
+	JavaScript is template based not class based. Here, we don't ' create class to get the object. But, we direct create objects.
+
+	Create Object:
+		1)By object literal
+		2)By creating instance of Object directly (using new keyword)
+		3)By using an object constructor (using new keyword)
+		
+		var obj1 = {fname= "Pradip",lname: "Bhoskar",age =25};		//using literals {}
+		
+		var student=new Object();  
+		student.id=25;  
+		student.name="Pradip Bhoskar";					//by creating instance
+		
+		function student(id,name){  
+		this.id=id;  
+		this.name=name;  
+		}  
+		e=new student(25,"Pradip Bhoskar");				//using constructor
+		
+		eg.
+			<script>
+				var student= {
+				
+					faname : "Pradip",
+					lname	:"Bhoskar",
+					age : 25,
+					subjects : ["maths","English","science"],		//array in object
+					full_name : function() {
+						return this.fname + " " + this.lname;		//function in object
+					},
+					address : {
+						city : "solapur",
+						state : "Maharashtra"				//object in objectb
+					}
+				}
+			</script>    
+
+			document.write(student);			//will show [object Object]
+			console.log(student);
+			document.write(student.fname);
+			document.write(student.subjects[0]);
+			
+	Array of Objects:
+		eg.
+			var student = [
+				{name: "Pradip", age: 25},
+				{name: "Ram", age: 22},
+				{name: "Sham", age: 27}
+				];
+			
+			for(int i=0; i<student.length; i++)
+			{
+				document.write(student[i].name + " "+student[i].age + " <br>");
+			}
+
+
+const variable with array and object:
+-------------------------------------
+	we can change the value of each index in array and each property in object particularly. But we cannot assign
+	all values of array or object we declared. That means we cannot add or remove the property from the object.
+	eg.
+		const full_name= ["Pradip", "Bhoskar"];
+		
+		full_name=["Pratik", "Kapase"];		//this is not possible
+		
+		full_name[0] ="Pratik";			//possible
+		full_name[1]= "Kapase";			//possible
+		
+		same for the object....
+		
+			const student= {name= "Pradip",age= 25};
+			
+			const student= {name= "Pratik", age= 24};		//not possible
+			
+			student.name= "pratik ";				//possible
+			student.age= 24;					//possible
+			
+Array map() method
+-------------------
+	JavaScript array map() method calls the specified function for every array element and returns the new array. 
+	This method doesn't change the original array.
+		array2 =array1.map(function_name);
+	eg.
+		var array1 = [5,7,8,9];
+		var array2 = array1.map(myFunction);
+		function myFunction(x)
+		{
+			return x*10;
+		} 
+				//gives the ans array2= [50,70,80,90];
+
+String Methods:
+----------------
+		var str ="Hello user.Welcome user in javascript.";
+		 
+
+	1)str.length				//gives the length of string
+	2)str.toLowerCase()			//converts the all charactors in lowercase
+	3)str.toUpperCase()			//converts all charactors in uppercase
+	4)str.includes("Welcome")		//checks the given charactor or word is present in string 
+	5)str.startsWith("Hell")		//checks the string starts with given charactors
+	6)str.endsWith("javacript.")		//checks the string ends with given charactors
+	7)str.search("user")			//same as includes but it gives the posistion of word else return -1
+	8)str.match(/user/g)			//search "user" and make new array 
+	9)str.indexOf("user")
+	10)str.lastIndexOf("user")
+	11)str.replace(/is/g, "are")		//replaces "is" with "are"
+	12)str.trim()				//removes the extra spaces 
+	13)str.charAt(15)			//returns the charactor at given position
+	14)str.charCodeAt(15)			//returns the ASCII code of charactor at given position
+	15)str.fromCharCode(67)			//returns charactor of given ASCII number
+	16)str1.concat(str2,str3)		//merge two or more stirng in single string
+	16)str.split(" ")			//splits the string and make the array
+	17)str.repeat(3)			//repeats the string for given number of times
+	18)str.slice(3,10)			//returns the string between index
+	19)str.substr(index,no_of_charactor)	//returns string from given index for given number of charactors
+	20)str.substring(3,10)			//same as slice() but does not gives last charactor
+	21)str.toSting()			//converts into string
+	
+
+Number Methods:
+-----------------
+	1)Number()				//converts into number
+	2)parseInt()				//converts into interger
+	3)parseFloat()				//converts into float value
+	4)Number.isFinite()			//checks given number is finite
+	5)Number.isInteger()			//checks given number is integer
+	6)toFixed(2)				//gives last given decimal
+	7)toPrecision(2)			//same as toFixed() bu gives roundfigure value
+	
+Math Methods:
+-------------
+	1)Math.ceil(5.35)			//gives upper integer			6
+	2)Math.floor(5.35)			//gives lower integer			5
+	3)Math.round(5.49)			//give integer according to math	5
+	4)Math.trunc(5.89)			//gives integer value only
+	5)Math.max(x,y,z,.....)			//returns highest value
+	6)Math.min(x,y,x,....)			//returns lowest value
+	7)Math.sqrt(x)				//returns square root	
+	8)Math.cbrt(x)				//returns cubic root
+	9)Math.pow(x,y)				//retuns power y power of x
+	10)Math.random()			//returns random value between 0 and 1
+	11)Math.abs(-5.25)			//returns the absolute value	
+	12)math.PI				//returns pi value
+	
+Date Methods:
+-------------
+	To use date methods you have to create the object of Date.
+	
+		var date= new Date();
+		
+		1)date.toDateString()					//	Sun Aug 28 2022
+		2)date.getDate()					//	28
+		3)dategetFullyear()					//	2022
+		4)date.getMonth()					//	7
+		5)
+		
+		
+		
+Document Object Module (DOM):
+=============================
+	The document object represents the whole html document.
+	
+	Target DOM object:
+	-----------------
+	
+	1) document.getElementById("id_name");
+	2) document.getElementsByClassName("class_name");
+	3) document.getElementsByTagName("tag_name");
+		
+		1)document ;						//gives all html document
+		2)document.all;						//gives all html in collection form
+		3)document.head;					//gives head html
+		4)document.title;
+		5)document.body;
+		6)document.links;					//gives anchor tags
+		7)document.images;
+		8)document.forms;
+		9)document.URL;
+		10)document.domain;
+		11)document.baseURI;
+		
+		
+	4) document.querySelector(CSS selector)				
+		//target only the first selector
+		eg.
+			document.querySelector("#heading").innerHTML="<h1>Target using querySelector<h1>";
+			
+	5) document.querySelectorAll(css slelector);			
+		//target the all selectors
+		eg.
+			document.querySelectorAll("h1");	//	
+		
+	DOM set and get methods:
+	-----------------------
+	GET:
+	----
+			we can get the html,text or attribute.
+			var element;
+				
+		1)innerText		
+			returns only text
+			eg.
+				element=document.getElementById("id_name").innerText;
+				
+		2)innerHtml
+			returns the whole inner html with text
+			eg. 
+				element= document.getElementsByClassName("class_name").innerHTML;
+				
+		3)getAttribute
+			returns only the value of the attribute
+			eg.
+			element= document.getElementsByTagName("tag_name").getAttribute("onClick()");	// id/class/tag/event/style
+				
+		4)getAttributeNode
+			returns the name as well as value of the attribute
+			eg.
+				element= document.getElementById("id_name").getAttributNode("style");
+				
+		5)Attributes
+			returns the collection of the all attributes
+			eg. 
+				element=doocument.getElementById("id_name").attrributes;
+				
+	SET:
+	----
+		we can set/change/remove the text/html/object value
+		
+		1)innerText
+			change/set/remove inner text
+			eg.
+				element=document.getElementsByTagName("title").innerText ="Title changed"; 
+		
+		2)innerHTML
+			change/set/remove inner html
+			eg.
+				element=document.getElementById("heading").innerHTML ="Heading changed using innerHTML.....";
+				
+		3)setAttribute
+			set/change the attribute
+			eg.
+				element= document.getElemntById("heading").setAttribute("style","border: px dotted red;");		
+				
+		4)Attributes
+			set/change the attribute
+			eg.
+				element=document.getElementById("heading").attributes[2].value="xyz";	//sets new class
+				
+		5)removeAttribute
+			removes the attribute
+			eg.
+				element=document.getElementById("heading").removeAttribute("class");				
+				
+		
+
+	CSS Styling using DOM:
+	----------------------
+	
+			let element;
+		1)style
+			element =document.querySelector("#id_name").style.border;				gets the value of border
+			element = document.querySelector("#id_name").style.backgroundColor ="yellow";		sets the value of the background color
+			
+			
+		2)className
+			element =document.querySelector("#header").className = "abc";				sets the new class
+			element = document.querySelector("#id_name").className;					gets the class name
+		
+		3)classList
+			element =document.querySelector("#header").classList = "abc";				sets the new class
+			element = document.querySelector("#id_name").classList;					gets the class name
+			
+		className returns classes in the form of string while classList returns in the form of collection
+		
+			methods of classList:
+				i)add()
+					element =document.querySelector("#header").classList.add("xyz","abc","pqr");			sets the new class
+				
+				ii)remove()
+					element =document.querySelector("#header").classList.remove("abc");				removes the class
+				
+				iii)toggle()
+					element =document.getElelmentById("header").classList.toggle("lmn");				set/remove on toggle
+					
+		
+	EventListener:
+	--------------
+	you can add event directly in html
+		<button onClick = "abc()"> Click Me</button>
+
+	benefits of EventListener:	
+		*reduce html document length
+		*you can use same event multiple times
+		*you can remove any event externaly
+		
+	add event using external javascript file:
+		
+		1) Add Event directly
+		eg.'
+			document.getElementByID("header").onclick =abc;
+			
+			function abc()
+			{
+				document.getElementById("header").style.background ="red";
+				//this.style.background ="red";
+				document.getElementById("other_id_name").style.background ="green";
+			}
+		
+		2) Add event using addEventListner() method
+
+			document.getElementById("id_name").addEventListener("event_name",function_name,useCapture); 	
+			//here useCapture is optional & bydefault value is false
+					 or
+			document.getElementById("id_name").addEventListener("event_name",function(){
+			
+				//statement
+			});
+			
+		eg.
+			document.getElementById("header").addEventListener("click",abc);
+			function abc(){
+				document.getElementById("header").style.background="black";
+			}	
+					
+		 	by using addEventListener you can add multiple events on one object
+		 	--------------------------------------------------------------------
+		 	eg.
+		 		document.getElementById("header").addEventListener("click",abc);
+		 		document.getElementById("header").addEventListener("mouseover",function(){
+		 		
+		 			document.getElementById("header").style.border= "5px dotted";	
+		 		});
+				function abc(){
+					document.getElementById("header").style.background="black";
+				}	
+	remove event using external javascript file:
+		eg
+			document.getElementById("header").addEventListener("mouseleave",abc);
+			document.getElementById("header").addEventListener("click",xyz);
+			
+			function abc()
+			{
+				document.getElementById("header").style.background= "green";	
+			}	
+		 	fuction xyz()
+		 	{
+		 		document.getElementById("header").removeEventListener("mouseleave",abc);
+		 	}
+		
+		
+	DOM Traversal Methods:
+	---------------------
+	1)parentNode							7)lastChild
+	2)parentElement							8)lastElementChild
+	3)children							9)nextElementSibling
+	4)childNodes							10)nextSibling
+	5)firstChild							11)previousElementSibling
+	6)firstElementChild						12)previousSibling
+	
+	DOM create Methods:
+	----------------------
+		1)createElement							//create new element
+			var element = document.createElement("p");		//creates paragraph
+			
+		2)createTextNode			
+			var text = document.createText("This is text....");
+			
+		3)createComment				
+			var ele = document.createComment("This is comment....");
+	
+	
+	DOM append methods:
+	-------------------
+		1)appendChild 		//only append previous element
+			eg.
+				var element = document.createElement("p");
+				var text = document.createText("This is text....");
+				element.appendChild(text);					//this will append text in paragraph
+				document.getElementById("id_name").appendChild(element);	//This will append newly created paragraph with html document
+			
+				//append method insert the element at last position
+				
+				
+		2)insertBefore		//only append previous element
+			eg.
+			
+				document.getElementById(id_name).insertBefore(element,document.getElementByid(id_name).childNodes[2]);
+				or
+				target = document.getElementById("id_name");
+				target.insertBefore(elemets,target.childNodes[2]);
+		
+		insertAdjacent methods:
+		-----------------------		
+				
+		3)insertAdjacentElement		//create and append new element
+			<p></p>		
+				
+		4)insertAdjacentHTML		//create and append new html
+			<p>This is text</p>		
+				
+		5)insertAdjacentText		//create and append new text
+			This is text
+				
+		posotions:
+
+			1)beforebegin
+			2)afterbegin
+			3)beforeend
+			4)afterend
+		eg.
+			var element ="<h1>This is heading</>"
+			document.getElementById("id_name").insertAdjacentHTML("afterbegin",element);
+
+
+
+		6)replaceChild
+			
+			var newElement =document.createElement("li");
+			var newText = document.createTextNode("Mango");
+
+			newElement.appendChild(newText);
+			
+			var target =document.getElementById("list");
+			
+			var oldElement = target.children[3];
+			
+			target.replaceChild(newElement,oldElement);
+
+
+		7)removeChild
+		
+			var element = document.getElementById("id_name").children[1];
+			
+			document.getElementById("id_name").removeChild(element);
+
+		8)cloneNode
+		
+			var element =document.getElementById("Id_name").children[2].cloneNode(true);
+			
+			
+	Form Events:
+	------------
+	1)onkeydown								7)onchange
+	2)onkeypress								8)onselect
+	3)onkeyup								9)onsubmit
+	4)onfocus								10)oninvalid
+	5)onblur									
+	6)oninput
+	
+
+
+	Animation:
+	----------
+	
+	1)setInterval(function_name,milliseconds)
+		the function calls repeatedly after given time
+		
+	2)clearInterval()
+		function stops working
+		
+		var a=0;
+		var repeat = setInterval(myFunction, 500);
+		
+		function myFunction()
+		{
+			a=a+10;
+			if(a===400)
+			{
+				clearInterval(repeat);
+			}
+			else
+			{
+				document.getElementById("id_name").style.marginLeft =a + 'px';
+			}
+		}
+	
+	3)setTimeout(funcytion_name,milliseconds)
+		the function call after given time.The function will call only once not repeatedly.
+		
+	4)clearTimeout() 
+
+
+
+BOM (Browser Object Model)
+===========================
+
+	* Get width and height of browser window
+	* Open and close browser window
+	* Move and resize broser window
+	* scroll to browser window
+	* Get url, hostname, protocol of browser window
+	* Get history of browser window
+	
+	
+	window height and width methods:
+	--------------------------------
+		1) innerHeight				
+		2) innerWidth
+		3) outerHeight
+		4) outerWidth
+		
+		var iheight = window.innerHeight;
+		var iwidth = window.innerWidth;
+
+	window open and close:
+	-----------------------
+		
+		1) window.open(url,name,specs);
+		
+			<button onclick ="myFunction()">Click Here</button>
+
+			var x;
+			function myFunction()
+			{
+				x= window.opn("https://socialkatta.com","_blank","width=500px,height=200px,left= 200px,top= 200px");
+			}
+
+		2)close the window:
+		
+			x.close(); 
+
+		3)move the window:
+			
+			x.moveTo(100,100);			//moves window with absolute position
+			x.moveBy(100,100);			//moves window with its relative position
+
+
+		4) resize the window:
+			
+			x.resizeTo(200,200);			//
+			x.resizeBy(200,200);
+			
+		5) scroll the window:
+			
+			x.scrollTo(200,200);
+			x.scrollBy(200,200);
+
+			here two parameters denotes the value of x axis and y axis, if value is negative it moves towards left or top
+	
+	
+	Location Object:
+	----------------
+	
+		1) location.host;					 		
+		2) location.hostname;
+		3) location.href;
+		4) location.port;
+		5) location.hash;
+		6) location.search;
+		
+	History Object:
+	---------------
+		1) history.length;
+	
+	
+		history.back();
+		history.forward();
+		history.go(-5); 			//goes 5 pages backward
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

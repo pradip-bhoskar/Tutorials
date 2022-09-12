@@ -1,0 +1,1081 @@
+
+
+									Advance javascript
+								==============================
+
+	Template String(Template literals):
+	-----------------------------------
+	
+
+		let user= "Pradip";
+		//document.write("Hello "+ user);			//using concatination
+
+		document.write(`Hello ${user}`);			//using template string
+
+
+	Arrow Function:
+	---------------
+
+		eg.
+		let user = "Pradip";
+		function welcome(user)
+		{
+			console.log(`hello ${user},welcome`);
+		}
+		welcome();
+
+		or
+
+				let user = "Pradip";
+				let welcome=function (user)
+				{
+					console.log(`hello ${user},welcome`);
+				}
+				welcome();
+
+		or
+		//using arrow function
+
+		let user = "Pradip";
+
+		let welcome= (user) =>{
+				console.log(`hello ${user},welcome`);
+			}		
+		welcome();
+
+
+		//if function contains single line of code then we can also write as:
+
+			let user = "Pradip";
+
+				let welcome= (user) =>	console.log(`hello ${user},welcome`);		
+				welcome();
+
+
+
+	Rest Operator (Function with multiple arguments)
+	-------------------------------------------------
+	
+		function function_name(parameter1,parameter2, ...args)			//here function expect multiple argument
+		{
+			for(let i in args)
+			{
+				//statement
+			}
+		}	
+	
+	
+		rest operator should be a last paratmeter of function
+	
+	
+	Spread Operator:
+	-------------------
+	
+		by using spread operator:
+		
+			1) spread as multiple arguments in function
+			
+				let arr= [10,20,30];			
+				function function_name(parameter1,parameter2, ...arr)		//function expect single argument with multiple values ie. array
+				{
+					for(let i in arr)
+					{
+						//statement
+					}
+				}	
+				
+				
+			2) Avoid the cloning of the array
+			
+				var arr1 =[20,30,40];
+				var arr2 = [...arr1];
+				arr1.push(50);		//will not push in arr2 
+	
+	
+			3)Merge two arrays or the two objects
+			
+				var arr1 =[20,30,40];
+				var arr2 = [50,60];
+							
+				//var arr3 = arr1.concat(arr2);			//using concat function
+	
+				var arr3 = [10, ...arr1, ...arr2, 70];		//using spread function
+	
+	
+			4)Merge two objects
+			
+				var obj1 = { name: "Pradip",city: "solapur"};
+				var obj2 = {age: 25};
+	
+				var obj3 = {...obj1, ...obj2};
+	
+	
+	
+	Object Literals:
+	-----------------
+		use shorthands..
+		refer:  https://www.javascripttutorial.net/es6/object-literal-extensions/
+		
+		1)Object property initilizer
+		
+			if the property name and variable name is same then no need to write property name
+		
+			let fname ="Pradip"; 
+			let lname= "Bhoskar";
+			
+			var obj = {
+			
+				fname,			//fname: fname   (without object literlal)
+				lname
+			}
+	
+		
+		2)Computed property name
+		
+			you can use a variable value as a property name
+		
+			let n ="name";
+			
+			var obj={
+			
+				[n]		: "Pradip";				//here property_name is name
+				
+				["student_"+ n]	: "Pradip Bhoskar";			//here property_name will be student_name
+			}
+		
+		
+		3) new function syntax
+		
+			
+			let obj = {
+				
+				name: "Pradip",
+				show: function() { console.log(this.name)}			//old version
+				show() {console.log(this.name)}					//new version
+				'show details'() {console.log(this.name)}			//you can give the space in function name
+			}
+		
+		
+			console.log(obj.show());						//old version
+			console.log(obj['show']());						//new version
+		
+		
+		eg.
+		
+			function createMachine(name, status)
+			{
+			    return {
+			     name: name, 
+			     status: status  
+			     };
+			}
+			
+				alternative with new version
+	
+			function createMachine(name, status)
+			{
+			    return { name, status };
+			}
+	
+
+		4)can create function that returns the object
+	
+			let fname= "Pradip";
+			let lname= "Bhoskar";
+			let age = 25;
+			
+			fuction student(fname,lname,age)
+			{
+				let fullname = fname + " " + lname;
+				return {fullname, age };
+			}	
+	
+			console.log(student(fname,lname,age));
+	
+	
+	Destructuring Array:
+	--------------------	
+		1) we can assign the array value to the variables in single line
+		eg.
+			let student = ["Pradip Bhoskar", 25,"solapur"];
+	
+			/* old version
+			
+				let name = student[0];
+				let age = student[1];
+			+	let city = student[2];
+			*/
+			
+			let [name,age,city] = student;			//new version
+		
+			let student = [, ,"solapur"];
+			let [name,age = 22,city];			//here name=undefined, age =22
+		
+		
+			let student= ["Pradip",25, [75,85]];
+			
+			let [name,age,[physics,maths]]= student;	//nested array
+		
+		2) destrcturing array with rest operator
+			
+			let user = ["Pradip","Bhoskar",25];	
+			let [fname, ...args] = user;	
+	
+		3)destructuring array with function
+		   i)		
+			function student([fname,lname,age])
+			{
+				console.log(fname);
+				console.log(lname);
+				console.log(age);
+			}
+		
+			student(["Pradip","Bhoskar",age]);		
+	
+		  ii)
+		  	function user()
+		  	{
+		  		return ["Pradip","solapur"];
+		  	}
+	
+			let [name,city] =user(); 
+			
+			
+	Destructuring Objects:
+	-----------------------
+
+	It is similar to the arrary destructuring.
+	Here, variable name should be same as the property name of the object.
+	eg.
+	
+		let student = {
+		
+			name ="Pradip",
+			age = 25
+		}
+		
+		let {name,age} = student;
+	
+		// let {name : student_name, age: stud_age} = student; 		//variable name changed
+	
+	
+	
+	Object Oriented Programming:
+	----------------------------
+
+	Class:
+	------
+	It is blueprint for the objects. Collection of properties and methods.
+	
+		class student
+		{
+			constructor()
+			{
+				var name= "Pradip";			//always use method to declare the variable in javascript 
+			}
+			
+			message() {
+				console.log(`Hello ${this.name}`);
+			}
+		}
+	
+	
+	Object:
+	-------
+	It is actual implementation of the class. These are the real things.
+	.
+		class student
+		{
+			var name= "Pradip";
+			message() {
+				console.log(`Hello ${name}`);
+			}
+		}
+	
+		let obj1 =new student();				//create object of the class
+		obj1.message();						//call the method using the object-
+		
+	
+	Types of methods:
+	----------------
+		1)constructor
+		
+			constructor()
+			{
+				console.log("This is called at the time of the object creation automatically");
+			}
+	
+	
+		2)prototype method
+		
+			message ()
+			{
+				console.log("We call this method using the object");
+			}
+			
+		3)static method
+		
+			static welcome()
+			{
+				console.log("we call this method using the classname, no need to create the object");
+			}
+		
+	Inheritance:
+	-------------
+	
+		Child class inherit all the properties and methods of it's parent class. extends keyword is used.
+		
+		class bike 
+		{
+			
+		}
+		
+		class honda extends bike
+		{
+		
+		}
+		
+		
+	Modules:
+	--------
+		It is nearly similar to the package in java.
+		
+		eg.
+		
+		file1.js
+		
+			export let name ="Pradip";			//use export keyword 
+			export function welcome()
+			{
+			
+			}
+			export class student
+			{
+			
+			}
+		
+			// export {name,welcome,student};		//you can use single line export instead of writing each time export
+			
+			
+			
+		file2.js
+			
+			//import {name} from './file1.js';						//use import keyword
+			//import {welcome} from './file1.js';
+			//import {student} from './file1.js';
+		
+			import {name,welcome,student} from './file1.js';				//single line import
+		
+			//import {name as n, welcome as message, student as user} from './file1.js';	//you can give the different names
+		
+			//import * as variable_name from './file1.js';					//import all elements
+			
+			console.log(name);
+			welcome();
+			let obj = new student();
+			
+			
+		To use in html document use type = "module"
+		
+			<script type="module" src="./file2.js"></script>
+		
+		
+		default function() in module:
+		-----------------------------
+		file1.js
+			export default function(){			//function name not given
+			
+				//statements
+			}
+		
+		file2.js
+		
+			import {default as function_name} from './file1.js';
+			
+			import function_name from './file1.js';				//no need to write default keyword
+			
+			function_name();						
+		
+		
+	
+	Promise:
+	=======================================================================================================================
+	
+		let prom = new Promise(function(resolve,reject){
+		
+			if (condition)
+			{
+				resolve("promise completed");
+			}
+			else
+			{
+				reject("Promise failed");
+			}
+		});
+		
+		//then() is callback function which calls after calling resolve() function
+			
+			prom.then(/*work to do after completing the promise */);			
+					
+		// catch() is callback function which calls after calling reject() function
+	
+			prom.catch(/*work to do after rejecting the promise */);
+	
+		//we can also write in single line as
+		
+			prom.then(result).catch(error);		
+			
+			//here result =value return by resolve() , error= value return by reject() function
+	 
+	
+		example:
+		
+			
+			/*
+			`	let status =true;
+				let prom = new Promise(function(resolve,reject){
+				
+					if (status)
+					{
+						resolve("promise completed");
+					}
+					else
+					{
+						reject("Promise failed");
+					}
+				});
+				
+				console(prom);		
+			*/
+				
+			you can also write it as:
+			
+				function prom(status)
+				{
+					return new Promise(function(resolve,reject){
+					
+						if (status)
+						{
+							resolve("promise completed");
+						}
+						else
+						{
+							reject("Promise failed");
+						}
+					});				
+				}
+				//console(prom(true));
+				
+				let welcome = () =>{
+					console.log("welcome , write code that should run after completing promise);
+				}
+				
+				let sorry = () =>{
+					console.log("sorry , write code that should run after rejecting promise);
+				}
+				
+				prom(true).then(welcome);
+				prom(false).catch(sorry);
+				
+				// prom(true).then(welcome).catch(sorry);	//here only then() will execute
+				
+				
+				
+		promise function with setTimeout:
+		--------------------------------
+	
+			function prom(status)
+			{
+				return new Promise(function(resolve,reject){
+					console.log("Please wait promise is in pending state");
+				
+					setTiimeout(() =>{
+					
+						if(status)
+						{
+							resolve("Promise completed");
+						}
+						else
+						{
+							reject("Promise rejected");
+						}
+					
+					},5000);
+				});			
+			}
+	
+			prom(true).then(promise_message).catch(promise_message);	//promise_message is message return by resolve or reject
+			
+			
+	Promise.all():
+	--------------		
+	reduce the length of code.
+	If all promises get resolve then it gives true value otherwise it will give false value.
+	
+		let p1 =new Promise(function(resolve,reject){
+		
+			resolve("First Promise resolve");
+		});
+		
+		let p2 =new Promise(function(resolve,reject){
+		
+			resolve("Seconod Promise resolve");
+		});
+		
+		let p3 =new Promise(function(resolve,reject){
+		
+			resolve("Third Promise resolve");
+		});
+		
+		let p4 =new Promise(function(resolve,reject){
+		
+			reject("Fourth Promise rejected");
+		});
+		
+		
+		Promise.all([p1,p2,p3]).then(()=>{
+			console.log("All promises resolved");	
+			
+		}).catch(()=>{
+		
+		console.log("Some promises are rejected...");
+		});
+		
+		
+	If all promises work same then we can also write as,
+		
+		let commonPromise = function (message){
+		
+			function(resolve,reject)
+			{
+				if()
+				resolve(`${message} promise resolved`);
+			}
+		}		
+		
+		let p1 = new Promise(commonPromise("first"));
+		let p2 = new Promise(commonPromise("second"));
+		let p3 = new Promise(commonPromise("third"));
+		let p4 =new Promise(function(resolve,reject){
+		
+			reject("Fourth Promise rejected");
+		});
+		
+		Promise.all([p1,p2,p3,p4]).then((result)=>{
+			console.log(result);	
+			
+		}).catch(()=>{
+		
+		console.log(result);
+		});
+		
+		
+	
+AJAX (Asynchronus Javascript And XML):
+--------------------------------------
+	By using AJAX we can create fast and dynamic web pages...
+
+	AJAX with JQuery:
+	------------------	
+	To use ajax we need load around 100kb file so loding time increases
+	
+		function prom()
+		{
+			return new Promise(function(resolve,reject){
+				console.log("Please wait promise is in pending state");
+			
+				setTiimeout(() =>{
+					//$.get("json_url",function_to_save_data(data){})
+					
+					$.get("https://jsonplaceholder.typicode.com/posts",function(data){
+					
+						resolve(data);
+						
+					}).fail(function(err){
+					
+						reject("Failed to load data");
+					})
+				},5000);
+			});			
+		}
+
+		prom(true).then(result).catch(result);
+	
+	
+	
+	AJAX with XMLHttpRequest:
+	-------------------------
+		
+		There are five steps of request & response in ajax,commonly called as readySate
+		
+		readyState
+		0: request not initilized
+		1: server connection established
+		2: request recieved to server
+		3: server processing the request
+		4: request processed and reponse is ready
+		
+		we can get response in the form of text,xml,json
+		text- responseText
+		xml - responseXML
+		
+		 var xhttp = new XMLHttpRequest();				//create object
+			
+		xhttp.onreadystatechange = function(){				//This function work like as event
+		
+			if(this.readyState === 4 && this.status===200)
+			{
+				console.log(this.responseText);			//if response is XML then use reponseXML 
+			}
+		}
+		xhttp.open("method_name","file_path",asnc_mode);
+		/*
+			method_name= httpRequest method   GET/POST
+			file_path = path of file 
+			async_mode =if async mode is true, loding data will work in background	true/false
+		*/
+		xhttp.send();
+	
+	
+	
+	
+	AJAX with javascript fetch() method:		mostly used
+	--------------------------------------------------------------
+	--------------------------------------------------------------
+	
+		* we can insert, update, read, delete data using the fetch() method
+		* It is faster than XMLHttpRequest
+		* Less code
+			
+		/*	
+			fetch();
+			
+			fetch(file_path/url);					//returns a promise
+			
+			fetch(file_path/url).then();				//Here then() also return another promise
+							
+			fetch(file_path/url).then(function(response){		//here reponse is promise return by fetch
+			
+				return response.data;				//here data is text() or json()
+		
+			}).then(function(result){				// here result is promise return by previous then()
+			
+				console.log(result);
+			
+			}).catch(function(result){
+			
+				console.log(result);
+			});
+	
+		*/
+		
+		above statement using arrow function
+		
+			fetch("url").then((response)=>{
+				return response.data;
+			}).then((success)=>{
+				console.log(suceess);
+			}).catch((err)=>{
+				console.log(error);
+			})
+		
+		or 
+		for single line code
+		
+			fetch("url").then((response)=>response.data;).then((success)=>console.log(suceess);).catch((err)=>console.log(error);)
+		
+		example
+		--------
+		load json data using fetch() method
+		------------------------------------	
+			
+			fetch("https://jsonplaceholder.typicode.com/posts").then((response)=>{
+				return response.json();
+			}).then((data)=>{
+			
+				//console.log(data);
+				for(k in data ){
+					document.write(`${data[k].id}  - ${data[k].title}  <br>`);
+					}
+				
+			}).catch((err)=>{
+			
+				console.log("data can not be fetched");
+			});
+	
+	
+	fetch()- insert,update,delete
+	-----------------------------
+		insert json data:
+		-----------------	
+			fetch("url",{
+			
+				method:	'POST',
+				body: JSON.stringify(
+					{
+						id: 25,					//stingify is the method that converts object data into json format 
+						name: "Pradip",
+						city: "Solapur";			
+					}
+				),
+				headers: {
+					'Content-type':  'application/json;'		//for json data
+				}
+			
+			})
+			.then((response)=>{
+					return response.data;
+				}).then((success)=>{
+					console.log(suceess);
+				}).catch((err)=>{
+					console.log(error);
+				})
+		
+		insert form data:
+		-----------------	
+			document.getElementById("form_id").addEventListener("click",function(x){
+			
+				x.preventDefault();				//avoids refresh after submit the form
+				
+				/*
+				var obj={
+					id:	document.getElementById("id").value, 
+					name: 	document.getElementById("name_id").value ,
+					city: 	document.getElementById("title_id").value,
+					}
+				*/
+			})
+		
+		
+			fetch("url",{
+			
+				method:	'POST',
+				//body: JSON.stringify(obj),
+			
+				body: new FormData(document.getElementById("form_id")),
+				headers: {
+					//'Content-type':  'application/json;'		//for json data
+					'Content-type'	:  'application/x-www-form-urlencoded;'
+				} 
+			
+			})
+			.then((response)=>{
+					return response.data;
+				}).then((success)=>{
+					console.log(suceess);
+				}).catch((err)=>{
+					console.log(error);
+				})
+		
+		update data:
+		------------
+			to update data use method: 'GET'
+			
+			fetch("url",{
+			
+				method:	'GET',
+				body: JSON.stringify(
+					{
+						id: 25,					
+						name: "Pradip Bhoskar",			//name updated
+						city: "Solapur";			
+					}
+				),
+				headers: {
+					'Content-type':  'application/json;'		//for json data
+				}
+			
+			})
+			.then((response)=>{
+					return response.data;
+				}).then((success)=>{
+					console.log(suceess);
+				}).catch((err)=>{
+					console.log(error);
+				})
+		
+		
+		Delete Data:
+		-----------
+		to delete data only write the method:'DELETE',no need to write body and headers
+	
+			fetch("url",{
+			
+				method:	'GET'
+			
+			})
+			.then((response)=>{
+					return response.data;
+				}).then((success)=>{
+					console.log(suceess);
+				}).catch((err)=>{
+					console.log(error);
+				}
+	
+	
+async function: & await method
+------------------------------------------------------------------
+
+	async function always return a promise.It reduce the complications of promise function.
+	
+		async function welcome()
+		{
+			return "welcome user...";
+		}
+		
+		welcome().then((result)=>{
+		
+			console.log(result);
+		})
+		
+	
+	asyn function with arrow function:
+		
+		let welcome = async ()=>{
+			return "Welcome";
+		}
+	
+		//let welcome = async ()=> "welcome";			//for single line of code 
+	
+	
+	await method:
+	==================
+		await method only work inside async function
+		mainly useful when we fetch the data from server
+		
+		async function test(){
+			
+			console.log("message 1");
+		  await console.log("message 2");			//print message and wait
+			console.log("message 3");
+			console.log("message 4");
+		}
+		
+		console.log("message 5");
+		test();
+		console.log("message 6");
+		console.log("message 7");
+		
+	
+		output:
+			message 5
+			message 1
+			message 2
+			message 6
+			message 7
+			message 3
+			message 4
+		
+	
+	
+		async function test()
+		{
+			const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+			const record = await response.json();
+			return record;
+			
+			//	return (await fetch("https://jsonplaceholder.typicode.com/posts/1")).json();  
+		}
+		
+		test().then((record)=>{
+			console.log(record);
+		}).catch(()=>{
+			console.log("can't fetch the data")
+		})
+	
+	
+	
+	Symbol
+	---------
+	Symbol is datatype derived in javascript ES6 version.
+	it stores unique value.
+	we can not use symbols in for in loop
+	also while converting object into JSON symbols will skip
+	
+		var x = Symbol();
+	
+	
+		var a= Symbol(25);	
+		var b= Symbol(25);
+		
+		console.log(a===b); 			//output: false
+		console.log(a);				//output: Symbol(25)
+		console.log(a.description);		//output: 25
+	
+	use symbol in object:
+	
+		let lname =Symbol();
+		let city = Symbol();
+		let user ={
+			name: "Pradip",
+			age: 25,
+			[city]: "solapur"		//city is symbol	
+		}
+		
+		user[lname] ="Bhoskar"; 
+		
+		console.log(user);			//output: {name: 'Pradip', age: 25, Symbol(): 'solapur', Symbol(): 'Bhoskar'}
+		console.log(user.name);			//output: Pradip
+		console.log(user[city]);		//output: solapur
+	
+		for (let key in user)
+		{
+			console.log(key);		//this will skip the symbol values
+		}					//output: Pradip 25
+		
+						
+	
+	
+Iterators:
+-----------------
+
+	Iterators work like as loop.But here all control is in our hand.
+	
+		var x = ["Apple","Mango","Mogara"];
+		
+		var y = x[Symbol.iterator]();
+	
+		console.log(y.next());
+		console.log(y.next());
+		console.log(y.next());
+		console.log(y.next());
+		
+		output:
+			{value: 'Apple', done: false}
+			{value: 'Mango', done: false}
+			{value: 'Mogara', done: false}
+			{value: 'undefined', done: true}
+			
+			
+Generators:
+------------
+We can give the pause in the function using the generators
+we can acquare the control over function code
+
+	* 	--> makes normal function to generator function
+	yield---------> gives the pause in the function
+	next()---------> will run next code
+	
+	we need to write next() method at least once to run the code
+	
+	function *test()
+	{
+		console.log("First message");
+		console.log("second message");
+	}
+	
+	let result= test();
+	
+	result.next();				//this line will give the output
+	
+	
+	eg.
+	
+		function *welcome()
+		{
+			console.log("Hey user welcome ");
+			yield 'first pause';
+			
+			console.log("You got first pause..");
+			console.log("Do your work we are going to take second pause");
+			yield 'second pause';
+			
+			console.log("you reached at end point");
+		}	
+	
+		let result = welcome();
+		
+		console.log(result.next());
+		console.log(result.next());
+		console.log(result.next());
+	
+Strict mode:
+-------------
+	strict mode gives the all normal errors which javascript ignores
+	
+		eg.
+		
+		"use strict";
+		
+		a = 10;			//this will give the error because we not defined the type of varible 
+		console.log(a);
+
+	
+Error Handling:
+---------------
+	JSON.parse(json_file_name);			//converts json file into the javascript object
+	JSON.stringify(obj_name);			//converts javascript objet into json file
+
+	1)try catch method
+		
+		try
+		{
+			console.log("Start of try");
+			//	dfghldsf;			//error code
+			console.log("End of try");
+		}
+		catch(err)
+		{
+			console.log("Error occured so catch is called ..."+ err );
+		}
+	
+	
+	try catch method does not work asyncronusly..i.e in setTimout() function etc.
+	
+	we need to write try catch inside that function
+	
+		setTimeout(function(){
+		
+			try
+			{
+				console.log("Start of try");
+				//	dfghldsf;			//error code
+				console.log("End of try");
+			}
+			catch(err)
+			{
+				console.log("Error occured so catch is called ..."+ err );
+			}
+		}, 2000)
+	
+	
+	2)throw
+		by using throw we create the manual error and stop the working of program
+		
+		throw new Error("We created manual error.........");
+	
+		eg.
+		
+		function welcome(){
+			console.log("welcome");
+			throw new Error("We created manual error.........");
+			
+			console.log("after error creating");
+		}
+		welcome();
+		
+		
+	3)finally
+		finally works with try catch
+		this method will always run even after error occured....
+	
+		try
+		{
+			console.log("Start of try");
+			dfghldsf;			//error code
+			console.log("End of try");
+		}
+		catch(err)
+		{
+			console.log("Error occured so catch is called ..."+ err );
+		}
+		finally
+		{
+			console.log("write your must run code here");
+		}
+		
+	
+	 
+	 
+	 ..................................................................................
+
